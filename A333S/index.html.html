@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sabaly Tourisme — Guide au Sénégal</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --vert: #1D9E75;
+      --vert-mid: #1D9E75;
+      --vert-clair: #E1F5EE;
+      --or: #D4A853;
+      --sable: #F7F3ED;
+      --texte: #1A1A18;
+      --gris: #6B6B63;
+      --blanc: #FFFFFF;
+      --wa: #25D366;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--sable);
+      color: var(--texte);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* ── NAVBAR ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--vert);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 64px;
+      box-shadow: 0 2px 16px rgba(15, 110, 86, 0.18);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-logo-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .nav-logo-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .nav-logo-text .name {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      color: var(--blanc);
+      display: block;
+      line-height: 1.1;
+    }
+
+    .nav-logo-text .tagline {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.65);
+      letter-spacing: 0.04em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--blanc);
+    }
+
+    .nav-wa {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--wa);
+      color: white;
+      text-decoration: none;
+      padding: 8px 18px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+
+    .nav-wa:hover {
+      opacity: 0.88;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      width: 24px;
+      height: 2px;
+      background: white;
+      border-radius: 2px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 92vh;
+      background: var(--vert);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 5rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 80% 20%, rgba(212, 168, 83, 0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 60% at 10% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      color: rgba(255, 255, 255, 0.85);
+      padding: 5px 18px;
+      border-radius: 50px;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.7s ease both;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      color: var(--blanc);
+      line-height: 1.15;
+      max-width: 680px;
+      margin-bottom: 1.25rem;
+      animation: fadeUp 0.7s 0.1s ease both;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--or);
+    }
+
+    .hero p {
+      font-size: 17px;
+      color: rgba(255, 255, 255, 0.75);
+      max-width: 480px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      animation: fadeUp 0.7s 0.2s ease both;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: fadeUp 0.7s 0.3s ease both;
+    }
+
+    .btn-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      background: var(--wa);
+      color: white;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 500;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+
+    .btn-wa:hover {
+      transform: translateY(-2px);
+      opacity: 0.92;
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      background: transparent;
+      color: white;
+      text-decoration: none;
+      padding: 13px 28px;
+      border-radius: 50px;
+      border: 1.5px solid rgba(255, 255, 255, 0.45);
+      font-size: 15px;
+      font-weight: 400;
+      transition: background 0.2s, border-color 0.2s;
+      cursor: pointer;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.7);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      animation: bounce 2s infinite;
+    }
+
+    /* ── STATS BAND ── */
+    .stats-band {
+      background: var(--or);
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+
+    .stat-item {
+      padding: 1.5rem 3rem;
+      text-align: center;
+      border-right: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .stat-item:last-child {
+      border-right: none;
+    }
+
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--blanc);
+      display: block;
+    }
+
+    .stat-lbl {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.8);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 5rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-tag {
+      font-size: 11px;
+      color: var(--vert-mid);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      color: var(--texte);
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+
+    .section-sub {
+      font-size: 15px;
+      color: var(--gris);
+      max-width: 500px;
+      margin-bottom: 3rem;
+      font-weight: 300;
+    }
+
+    /* ── SERVICES ── */
+    #services {
+      background: var(--sable);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .service-card {
+      background: var(--blanc);
+      border-radius: 16px;
+      padding: 1.75rem;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(15, 110, 86, 0.1);
+    }
+
+    .service-icon {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .service-icon img {
+      width: 150px;
+      /* même largeur pour toutes */
+      height: 100px;
+      /* même hauteur pour toutes */
+      object-fit: cover;
+      /* remplit le cadre sans déformer */
+      border-radius: 10px;
+      /* optionnel pour un style plus moderne */
+      display: block;
+      margin: 0 auto;
+    }
+    }
+
+    .service-card h3 {
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .service-card p {
+      font-size: 13px;
+      color: var(--gris);
+      line-height: 1.55;
+    }
+
+    /* ── À PROPOS ── */
+    #apropos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+    }
+
+    .apropos-img img {
+      width: 100%;
+      max-width: 500px;
+      /* taille max de l’image */
+      height: auto;
+      object-fit: cover;
+      border-radius: 15px;
+      /* optionnel pour un style moderne */
+      display: block;
+    }
+
+    .apropos-img::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 40%;
+      background: linear-gradient(to top, rgba(15, 110, 86, 0.6), transparent);
+    }
+
+    .apropos-content .section-tag {
+      margin-top: 0;
+    }
+
+    .apropos-content p {
+      font-size: 15px;
+      color: var(--gris);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+      font-weight: 300;
+    }
+
+    .apropos-stats {
+      display: flex;
+      gap: 2rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .apropos-stat .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--vert);
+      display: block;
+    }
+
+    .apropos-stat .lbl {
+      font-size: 12px;
+      color: var(--gris);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* ── GALERIE ── */
+
+    #galerie {
+      background: var(--blanc);
+      padding: 4rem 2rem;
+    }
+
+    #galerie>div {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .galerie-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      /* 4 images par ligne */
+      gap: 12px;
+      margin-top: 2rem;
+    }
+
+    .galerie-item {
+      height: 120px;
+      /* petite hauteur */
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .galerie-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      /* image bien cadrée */
+      display: block;
+    }
+
+    /* IMPORTANT : on annule les anciennes grandes tailles */
+
+    .g1,
+    .g2,
+    .g3,
+    .g4,
+    .g5 {
+      grid-column: span 1 !important;
+      grid-row: span 1 !important;
+    }
+
+    /* POPUP IMAGE */
+    .image-popup {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .image-popup img {
+      max-width: 90%;
+      max-height: 85%;
+      border-radius: 12px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .close-popup {
+      position: absolute;
+      top: 25px;
+      right: 35px;
+      font-size: 40px;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* tablette */
+
+    @media (max-width: 992px) {
+      .galerie-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* mobile */
+
+    @media (max-width: 576px) {
+      .galerie-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .galerie-item {
+        height: 150px;
+      }
+    }
+
+    /* tablette */
+
+    @media (max-width: 992px) {
+      .galerie-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* mobile */
+
+    @media (max-width: 576px) {
+      .galerie-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .galerie-item {
+        height: 160px;
+      }
+    }
+
+    /* Responsive tablette */
+
+    @media (max-width: 992px) {
+      .galerie-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* Responsive mobile */
+
+    @media (max-width: 576px) {
+      .galerie-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .galerie-item {
+        height: 200px;
+      }
+    }
+
+    /* ── AVIS ── */
+    #avis {
+      background: #f7f3ed;
+      padding: 80px 40px;
+    }
+
+    #avis>div {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .avis-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .avis-score {
+      background: white;
+      padding: 25px 35px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .avis-score .big {
+      font-size: 52px;
+      font-family: serif;
+    }
+
+    .avis-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+
+    .avis-card {
+      background: white;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+      transition: 0.3s;
+    }
+
+    .avis-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .avis-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 15px;
+    }
+
+    .avis-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .avis-name {
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .avis-pays {
+      font-size: 13px;
+      color: #777;
+    }
+
+    .avis-stars {
+      color: #E8A020;
+      margin-bottom: 12px;
+    }
+
+    .avis-text {
+      line-height: 1.7;
+      color: #555;
+    }
+
+    .form-row {
+      margin-bottom: 14px;
+    }
+
+    .form-row label {
+      display: block;
+      font-size: 12px;
+      color: var(--gris);
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .form-row input,
+    .form-row textarea {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid #E0DDD8;
+      border-radius: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      color: var(--texte);
+      background: var(--sable);
+      transition: border-color 0.2s;
+      outline: none;
+    }
+
+    .form-row input:focus,
+    .form-row textarea:focus {
+      border-color: var(--vert-mid);
+    }
+
+    .form-row textarea {
+      resize: none;
+      height: 90px;
+    }
+
+    .star-row {
+      display: flex;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .star-btn {
+      font-size: 26px;
+      cursor: pointer;
+      opacity: 0.25;
+      background: none;
+      border: none;
+      padding: 0;
+      transition: opacity 0.15s, transform 0.1s;
+      color: #E8A020;
+    }
+
+    .star-btn.active {
+      opacity: 1;
+    }
+
+    .star-btn:hover {
+      transform: scale(1.15);
+    }
+
+    .btn-submit {
+      margin-top: 6px;
+      width: 100%;
+      padding: 13px;
+      background: var(--vert);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-submit:hover {
+      background: var(--vert-mid);
+      transform: translateY(-1px);
+    }
+
+    .success-banner {
+      display: none;
+      margin-top: 14px;
+      padding: 12px 18px;
+      background: var(--vert-clair);
+      border-radius: 10px;
+      color: var(--vert);
+      font-size: 14px;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--vert);
+      padding: 5rem 2rem;
+    }
+
+    #contact>div {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    #contact .section-tag {
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    #contact .section-title {
+      color: var(--blanc);
+    }
+
+    #contact .section-sub {
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-item {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 1.25rem 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .contact-lbl {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+
+    .contact-val {
+      font-size: 15px;
+      color: var(--blanc);
+      font-weight: 400;
+    }
+
+    .contact-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--wa);
+      color: white;
+      text-decoration: none;
+      padding: 16px 36px;
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: 500;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .contact-wa:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0a3d2d;
+      color: rgba(255, 255, 255, 0.45);
+      text-align: center;
+      padding: 1.5rem 2rem;
+      font-size: 13px;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: translateX(-50%) translateY(0);
+      }
+
+      50% {
+        transform: translateX(-50%) translateY(8px);
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      #apropos {
+        grid-template-columns: 1fr;
+      }
+
+      .apropos-img {
+        min-height: 220px;
+        font-size: 4rem;
+      }
+
+      .galerie-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+      }
+
+      .g1,
+      .g4 {
+        grid-column: span 1;
+      }
+
+      .stats-band {
+        gap: 0;
+      }
+
+      .stat-item {
+        padding: 1rem 1.5rem;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      }
+    }
+
+    /* WhatsApp icon inline */
+    .wa-icon {
+      width: 18px;
+      height: 18px;
+      fill: white;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<div id="imagePopup" class="image-popup" onclick="fermerImage()">
+  <span class="close-popup">&times;</span>
+  <img id="popupImg" src="" alt="image agrandie">
+</div>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <a class="nav-logo" href="#">
+      <div class="nav-logo-icon"><img src="logo.png" alt="Sabaly Tourisme"
+          style="width:48px;height:48px;object-fit:contain;border-radius:50%;" /></div>
+      <div class="nav-logo-text">
+        <span class="name">Sabaly Tourisme</span>
+        <span class="tagline">Votre guide au Sénégal</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#apropos">À propos</a></li>
+      <li><a href="#galerie">Galerie</a></li>
+      <li><a href="#avis">Avis</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="nav-wa"
+      href="https://wa.me/221776507036?text=Bonjour%2C%20je%20voudrais%20r%C3%A9server%20une%20excursion%20avec%20Sabaly%20Tourisme%20!"
+      target="_blank">
+      <svg class="wa-icon" viewBox="0 0 24 24">
+        <path
+          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+      </svg>
+      Réserver
+    </a>
+    <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero" id="accueil">
+    <div class="hero-badge">Guide certifié · Thiès / Saly & Sénégal</div>
+    <h1>Découvrez le Sénégal autrement avec <em>Sabaly Tourisme</em></h1>
+    <p>Des aventures inoubliables entre mer, culture et nature. Votre guide de confiance pour explorer le pays de la
+      Teranga.</p>
+    <div class="hero-btns">
+      <a class="btn-wa"
+        href="https://wa.me/221776507036?text=Bonjour%2C%20je%20voudrais%20r%C3%A9server%20une%20excursion%20avec%20Sabaly%20Tourisme%20!"
+        target="_blank">
+        <svg class="wa-icon" viewBox="0 0 24 24">
+          <path
+            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+        </svg>
+        Réserver via WhatsApp
+      </a>
+      <a class="btn-ghost" href="#galerie">Voir la galerie</a>
+    </div>
+    <div class="hero-scroll">↓ Découvrir</div>
+  </div>
+
+  <!-- STATS BAND -->
+  <div class="stats-band">
+    <div class="stat-item reveal">
+      <span class="stat-num">10+</span>
+      <span class="stat-lbl">Années d'expérience</span>
+    </div>
+    <div class="stat-item reveal">
+      <span class="stat-num">500+</span>
+      <span class="stat-lbl">Clients satisfaits</span>
+    </div>
+    <div class="stat-item reveal">
+      <span class="stat-num">15+</span>
+      <span class="stat-lbl">Destinations</span>
+    </div>
+    <div class="stat-item reveal">
+      <span class="stat-num">3</span>
+      <span class="stat-lbl">Langues parlées</span>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-tag reveal">Ce que nous faisons</div>
+    <h2 class="section-title reveal">Nos services</h2>
+    <p class="section-sub reveal">Des expériences pensées pour chaque type de voyageur.</p>
+
+    <div class="services-grid">
+
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <img src="goree-island-slave-house-unesco-heritage-site0.jpg" alt="ÎLE DE GORÉE">
+        </div>
+
+        <h3>ÎLE DE GORÉE</h3>
+        <p>Un lieu historique chargé d’émotion, connu pour la Maison des Esclaves et ses ruelles colorées.
+        </p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <img src="Parc-Bandia.jpg" alt="Tourisme culinaire">
+        </div>
+        <h3>RESERVE DE BANDIA</h3>
+        <p>Safari au Sénégal avec girafes, zèbres, rhinocéros et antilopes.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <img src="sinesaloum.jpg" alt="Excursions">
+        </div>
+        <h3>SINE SALOUM</h3>
+        <p>Classé patrimoine mondial de l’UNESCO, c’est un labyrinthe de bolongs, îles et mangroves.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <img src="Ocean-Lile-de-ngor.jpeg" alt="Circuits photo">
+        </div>
+        <h3>L'ILE DE NGOR</h3>
+        <p>Petite île paradisiaque située au large de Dakar. Eau claire, plages tranquilles, surf et ambiance détendue.
+        </p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <img src="caption (1).jpg" alt="Excursions">
+        </div>
+        <h3>DESERT DE LOMPOUL</h3>
+        <p>Un petit désert entre Dakar et Saint-Louis avec des dunes dorées.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <img src="Excursion-au-lac-Rose-du-Senegal.jpeg" alt="Excursions">
+        </div>
+        <h3>LAC ROSE</h3>
+        <p>Célèbre pour sa couleur rosée et ses balades en pirogue ou en 4x4 sur les dunes.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <img src="570960-830x415-pont-rejoignant-l-ile-de-fadiouth-joal-fadiouth-senegal.jpg" alt="Excursions">
+        </div>
+        <h3>JOAL - FADIOUTH</h3>
+        <p>Ville natale de Léopold Sédar Senghor, célèbre pour son île aux coquillages reliée par un pont en bois.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <img src="398357-1260x630-plage-de-saly-la-petite-cote-senegal.jpg" alt="Excursions">
+        </div>
+        <h3>SALY - SOMONE</h3>
+        <p>Zone balnéaire idéale pour plages, hôtels et détente.</p>
+      </div>
+
+    </div>
+  </section>
+  <!-- À PROPOS -->
+  <div id="apropos">
+    <div class="apropos-img reveal">
+      <img src="WhatsApp Image 2025-12-12 at 00.36.08.jpeg" alt="À propos de nous">
+    </div>
+    <div class="apropos-content">
+      <div class="section-tag reveal">Notre histoire</div>
+      <h2 class="section-title reveal">À propos de nous</h2>
+      <p class="reveal">Fondée par un passionné du
+        tourisme, Monsieur Moustapha Sabaly est un guide touristique expérimenté . Nous vous proposons des excursions
+        authentiques
+        au Sénégal : Saly, Bandia, Île de Gorée, Lac Rose et plus encore.
+        Notre passion est de faire découvrir les trésors du Sénégal à nos clients,
+        en offrant des expériences personnalisées et mémorables.
+        Rejoignez-nous pour une aventure inoubliable au cœur de la culture sénégalaise ! Sabaly Tourisme vous fait vivre
+        le pays de la Teranga.
+      </p>
+      <p class="reveal">Notre mission : partager l'authenticité, la chaleur et la richesse culturelle du Sénégal avec
+        chaque visiteur qui nous fait confiance.</p>
+      <div class="apropos-stats reveal">
+        <div class="apropos-stat"><span class="num">10+</span><span class="lbl">Années d'exp.</span></div>
+        <div class="apropos-stat"><span class="num">500+</span><span class="lbl">Clients</span></div>
+        <div class="apropos-stat"><span class="num">15+</span><span class="lbl">Destinations</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="galerie">
+    <div>
+      <div class="section-tag reveal">Nos souvenirs</div>
+      <h2 class="section-title reveal">Galerie photos</h2>
+      <p class="section-sub reveal">
+        Quelques aperçus de nos aventures au Sénégal.
+      </p>
+
+      <div class="galerie-grid">
+
+        <div class="galerie-item reveal">
+          <img src="Moustapha S.jpeg" alt="Galerie 1" onclick="ouvrirImage(this.src)">
+        </div>
+
+        <div class="galerie-item reveal">
+          <img src="WhatsApp Image 2026-02-26 at 20.38.48 (1).jpeg" alt="Galerie 1" onclick="ouvrirImage(this.src)">
+        </div>
+
+        <div class="galerie-item reveal">
+          <img src="WhatsApp Image 2026-02-26 at 20.38.48.jpeg" alt="Galerie 2" onclick="ouvrirImage(this.src)">
+        </div>
+
+        <div class="galerie-item reveal">
+          <img src="WhatsApp Image 2026-02-26 at 20.38.49 (1).jpeg" alt="Galerie 3" onclick="ouvrirImage(this.src)">
+        </div>
+
+        <div class="galerie-item reveal">
+          <img src="WhatsApp Image 2026-02-26 at 20.38.49 (2).jpeg" alt="Galerie 4" onclick="ouvrirImage(this.src)">
+        </div>
+
+        <div class="galerie-item reveal">
+          <img src="WhatsApp Image 2026-02-26 at 20.38.49 (3).jpeg" alt="Galerie 5" onclick="ouvrirImage(this.src)">
+        </div>
+
+        <div class="galerie-item reveal">
+          <img src="WhatsApp Image 2026-02-26 at 20.38.49.jpeg" alt="Galerie 6" onclick="ouvrirImage(this.src)">
+        </div>
+
+        <div class="galerie-item reveal">
+          <img src="WhatsApp Image 2026-02-26 at 20.38.50 (1).jpeg" alt="Galerie 7" onclick="ouvrirImage(this.src)">
+        </div>
+
+        <div class="galerie-item reveal">
+          <img src="WhatsApp Image 2026-02-26 at 20.38.50 (2).jpeg" alt="Galerie 8" onclick="ouvrirImage(this.src)">
+        </div>
+
+        <div class="galerie-item reveal">
+          <img src="WhatsApp Image 2026-02-26 at 20.38.50 (3).jpeg" alt="Galerie 8" onclick="ouvrirImage(this.src)">
+        </div>
+
+        <div class="galerie-item reveal">
+          <img src="WhatsApp Image 2026-02-26 at 20.38.50.jpeg" alt="Galerie 8" onclick="ouvrirImage(this.src)">
+        </div>
+
+        <div class="galerie-item reveal">
+          <img src="WhatsApp Image 2026-02-26 at 20.38.51.jpeg" alt="Galerie 8" onclick="ouvrirImage(this.src)">
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- AVIS -->
+  <div id="avis">
+    <div>
+      <div class="avis-top">
+        <div>
+          <div class="section-tag reveal">Témoignages</div>
+          <h2 class="section-title reveal">Avis clients</h2>
+          <p class="section-sub reveal">Ce que disent nos voyageurs.</p>
+        </div>
+        <div class="avis-score reveal">
+          <div class="big" id="avg-score">5.0</div>
+          <div>
+            <div class="stars">★★★★★</div>
+            <div class="count" id="review-count">3 avis</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="avis-grid" id="avis-list">
+        <div class="avis-card reveal">
+          <div class="avis-header">
+            <div class="avis-avatar" style="background:#E1F5EE;color:#0F6E56;">ML</div>
+            <div>
+              <div class="avis-name">Florence N.</div>
+              <div class="avis-pays">France 🇫🇷</div>
+            </div>
+          </div>
+          <div class="avis-stars">★★★★★</div>
+          <div class="avis-text">Une expérience incroyable ! Le guide est très professionnel et passionné. L'île de
+            Gorée était magique.</div>
+        </div>
+        <div class="avis-card reveal">
+          <div class="avis-header">
+            <div class="avis-avatar" style="background:#FAEEDA;color:#854F0B;">AK</div>
+            <div>
+              <div class="avis-name">Amineta F.</div>
+              <div class="avis-pays">Sénégal 🇸🇳</div>
+            </div>
+          </div>
+          <div class="avis-stars">★★★★★</div>
+          <div class="avis-text">J'ai redécouvert mon pays grâce à Sabaly Tourisme. Le circuit culinaire était délicieux
+            !</div>
+        </div>
+        <div class="avis-card reveal">
+          <div class="avis-header">
+            <div class="avis-avatar" style="background:#E6F1FB;color:#185FA5;">JB</div>
+            <div>
+              <div class="avis-name">Matar D.</div>
+              <div class="avis-pays">France 🇫🇷</div>
+            </div>
+          </div>
+          <div class="avis-stars">★★★★★</div>
+          <div class="avis-text">Le meilleur guide touristique de Saly ! Très sympathique, il parle un français
+            parfait. Je recommande vivement l'excursion au Lac Rose.</div>
+        </div>
+      </div>
+
+      <div class="avis-form reveal">
+        <h3>Laisser un avis</h3>
+        <div class="form-row">
+          <label>Votre prénom</label>
+          <input type="text" id="inp-nom" placeholder="Ex : Sophie" />
+        </div>
+        <div class="form-row">
+          <label>Votre pays</label>
+          <input type="text" id="inp-pays" placeholder="Ex : France 🇫🇷" />
+        </div>
+        <div class="form-row">
+          <label>Note</label>
+          <div class="star-row" id="star-row">
+            <button class="star-btn" data-v="1">★</button>
+            <button class="star-btn" data-v="2">★</button>
+            <button class="star-btn" data-v="3">★</button>
+            <button class="star-btn" data-v="4">★</button>
+            <button class="star-btn" data-v="5">★</button>
+          </div>
+        </div>
+        <div class="form-row">
+          <label>Votre avis</label>
+          <textarea id="inp-avis" placeholder="Partagez votre expérience avec Sabaly Tourisme..."></textarea>
+        </div>
+        <button class="btn-submit" onclick="publierAvis()">Publier mon avis</button>
+        <div class="success-banner" id="success-banner">Merci ! Votre avis a bien été publié. 🎉</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div id="contact">
+    <div>
+      <div class="section-tag reveal">Parlons de votre voyage</div>
+      <h2 class="section-title reveal">Nous contacter</h2>
+      <p class="section-sub reveal">Disponibles 7j/7 — Nous vous répondrons dans les plus brefs délais.</p>
+      <div class="contact-grid">
+        <div class="contact-item reveal">
+          <div class="contact-lbl">Téléphone / WhatsApp</div>
+          <div class="contact-val">+221 77 650 70 36 / 76 545 17 03 </div>
+        </div>
+        <div class="contact-item reveal">
+          <div class="contact-lbl">Email</div>
+          <div class="contact-val">sabalytourisme@gmail.com</div>
+        </div>
+        <div class="contact-item reveal">
+          <div class="contact-lbl">Langues</div>
+          <div class="contact-val">Français · Wolof · Peulh</div>
+        </div>
+        <div class="contact-item reveal">
+          <div class="contact-lbl">Disponibilité</div>
+          <div class="contact-val">7j/7 sur réservation</div>
+        </div>
+      </div>
+      <a class="contact-wa reveal"
+        href="https://wa.me/221776507036?text=Bonjour%2C%20je%20voudrais%20r%C3%A9server%20une%20visite%20avec%20Sabaly%20Tourisme%20!"
+        target="_blank">
+        <svg class="wa-icon" viewBox="0 0 24 24">
+          <path
+            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+        </svg>
+        Réserver maintenant sur WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Réalisé par A333S · © 2026 Thiès, Sénégal · Tous droits réservés</p>
+  </footer>
+
+  <script>
+    /* ── Scroll reveal ── */
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    /* ── Étoiles ── */
+    let selectedStars = 0;
+    let totalRating = 15, totalCount = 3;
+    const starBtns = document.querySelectorAll('.star-btn');
+    starBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        selectedStars = parseInt(btn.dataset.v);
+        starBtns.forEach(b => b.classList.toggle('active', parseInt(b.dataset.v) <= selectedStars));
+      });
+      btn.addEventListener('mouseover', () => {
+        starBtns.forEach(b => b.style.opacity = parseInt(b.dataset.v) <= parseInt(btn.dataset.v) ? '0.7' : '0.25');
+      });
+      btn.addEventListener('mouseout', () => {
+        starBtns.forEach(b => b.style.opacity = parseInt(b.dataset.v) <= selectedStars ? '1' : '0.25');
+      });
+    });
+
+    /* ── Publier avis ── */
+    function publierAvis() {
+      const nom = document.getElementById('inp-nom').value.trim();
+      const pays = document.getElementById('inp-pays').value.trim();
+      const texte = document.getElementById('inp-avis').value.trim();
+      if (!nom || !texte || selectedStars === 0) { alert('Merci de remplir votre prénom, votre note et votre avis !'); return; }
+      const initiales = nom.substring(0, 2).toUpperCase();
+      const palettes = [
+        { bg: '#E1F5EE', color: '#0F6E56' }, { bg: '#FAEEDA', color: '#854F0B' },
+        { bg: '#E6F1FB', color: '#185FA5' }, { bg: '#EEEDFE', color: '#3C3489' }, { bg: '#FAECE7', color: '#993C1D' }
+      ];
+      const c = palettes[Math.floor(Math.random() * palettes.length)];
+      const etoiles = '★'.repeat(selectedStars) + '☆'.repeat(5 - selectedStars);
+      const card = document.createElement('div');
+      card.className = 'avis-card';
+      card.innerHTML = `
+      <div class="avis-header">
+        <div class="avis-avatar" style="background:${c.bg};color:${c.color};">${initiales}</div>
+        <div><div class="avis-name">${nom}</div><div class="avis-pays">${pays || 'Voyageur'}</div></div>
+      </div>
+      <div class="avis-stars" style="color:#E8A020;font-size:13px;">${etoiles}</div>
+      <div class="avis-text">${texte}</div>`;
+      document.getElementById('avis-list').appendChild(card);
+      totalRating += selectedStars; totalCount++;
+      document.getElementById('avg-score').textContent = (totalRating / totalCount).toFixed(1);
+      document.getElementById('review-count').textContent = totalCount + ' avis';
+      document.getElementById('inp-nom').value = '';
+      document.getElementById('inp-pays').value = '';
+      document.getElementById('inp-avis').value = '';
+      selectedStars = 0;
+      starBtns.forEach(b => { b.classList.remove('active'); b.style.opacity = '0.25'; });
+      const banner = document.getElementById('success-banner');
+      banner.style.display = 'block';
+      setTimeout(() => banner.style.display = 'none', 3500);
+    }
+
+    /* ── Menu mobile ── */
+    function toggleMenu() {
+      const links = document.querySelector('.nav-links');
+      links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+      links.style.flexDirection = 'column';
+      links.style.position = 'absolute';
+      links.style.top = '64px';
+      links.style.left = '0';
+      links.style.right = '0';
+      links.style.background = '#0F6E56';
+      links.style.padding = '1rem 2rem';
+      links.style.gap = '16px';
+    }
+    function ouvrirImage(src) {
+      document.getElementById("popupImg").src = src;
+      document.getElementById("imagePopup").style.display = "flex";
+    }
+
+    function fermerImage() {
+      document.getElementById("imagePopup").style.display = "none";
+    }
+  </script>
+</body>
+
+</html>
